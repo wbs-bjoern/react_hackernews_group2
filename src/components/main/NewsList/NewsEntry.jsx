@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 export default function NewsEntry({ item }) {
 
     const [myNewsItem, setMyNewsItem] = useState({ "by": "nora" })
-    const [sourceURL, setSourceURL] = useState()
     const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty"
     const currentDate = Date.now()
 
@@ -20,7 +19,7 @@ export default function NewsEntry({ item }) {
     }
 
     const tellTaskToBeStopped = () => {
-        console.log("Task stopped")
+        console.log(item, "stopped")
     }
 
     useEffect(() => {

@@ -3,14 +3,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import New from './components/main/NewsPage/New'
+import Jobs from './components/main/NewsPage/Jobs'
+import Main from './components/main/index'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showPage, setPage] = useState(<New />)
 
   return (
     <>
 
-      <New />
+      <Main showPage={showPage} />
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
