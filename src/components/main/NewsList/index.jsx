@@ -29,8 +29,9 @@ export default function NewsList({ url, showOL = "1" }) {
     }
 
     return (
+
         <>
-            <ol style={{ listStyle: showOL }}>
+            <ol className="entry" style={{ listStyle: showOL }}>
                 {shownNewsList.map((item) => <NewsEntry key={item} item={item} />)}
             </ol>
             <button onClick={showMoreData}>Mehr</button>

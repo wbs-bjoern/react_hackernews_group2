@@ -1,8 +1,43 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  
   padding: 2rem;
-  text-align: center;
+ 
+}
+
+/* Header */
+
+nav, ul {
+  display: flex;
+  
+  height: 24px;
+  align-items: center;
+  
+}
+
+/* main */
+.entry {
+  flex-direction: column;
+  background-color: #F6F6EF;
+}
+
+.link {
+  color: black;
+}
+li {
+  list-style-type:none;
+  padding: 2px 4.3px
+  
+}
+
+
+/* footer  */
+
+.navFooter {
+  justify-content: center;
+  padding-top: 0.5rem;
+  background-color: #F6F6EF;
+
 }
 
 .logo {
