@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 
-export default function NewsEntry({ item }) {
+export default function NewsEntry({ item, points, author, hide, past, comments }) {
 
     const [myNewsItem, setMyNewsItem] = useState({ "by": "nora" })
     const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty"
@@ -19,7 +19,7 @@ export default function NewsEntry({ item }) {
     }
 
     const tellTaskToBeStopped = () => {
-        console.log(item, "stopped")
+        console.log(/* item,  */"stopped")
     }
 
     useEffect(() => {
@@ -56,18 +56,54 @@ export default function NewsEntry({ item }) {
         }
     }
 
+    const getComments = () => {
+        if (!comments) {
+            return ""
+        } else if (myNewsItem.kids) {
+            return myNewsItem.kids.length == 1 ? "| " + myNewsItem.kids.length + " comment" : "| " + myNewsItem.kids.length + " comments"
+        } else {
+            return "| discuss"
+        }
+    }
+
+    const getPoints = () => {
+        if (points && myNewsItem.score) {
+            return myNewsItem.score == 1 ? myNewsItem.score + " point" : myNewsItem.score + " points"
+        }
+    }
+
+    const getAuthor = () => {
+        if (author) {
+            return "by " + myNewsItem.by
+        }
+    }
+
+    const getHide = () => {
+        if (hide) {
+            return (
+                <>
+                    | <a href="">hide</a>
+                </>
+            )
+        }
+    }
+
+    const getPast = () => {
+        if (past) {
+            return (
+                <>
+                    | <a href="">past</a>
+                </>
+            )
+        }
+    }
 
     return (
         <>
             <li>
-                <div><a href={myNewsItem.url}>{myNewsItem.title}</a> ({getTopLevelDomain()})</div>
+                <div><img src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a href={myNewsItem.url}>{myNewsItem.title}</a> ({getTopLevelDomain()})</div>
                 <div>
-                    {myNewsItem.score} point
-                    by {myNewsItem.by}
-                    &nbsp;{getTimePast()}
-                    | <a>hide</a>
-                    | <a>past</a>
-                    | <a>discuss</a>
+                    {getPoints()} {getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
                 </div>
             </li>
         </>
