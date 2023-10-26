@@ -30,26 +30,30 @@ export default function NewsEntry({ item }) {
     }, [])
 
     const getTimePast = () => {
-        let timePastMin = Math.floor((currentDate/1000 - myNewsItem.time)/60);
-        let timePastHour = Math.floor((currentDate/1000 - myNewsItem.time)/60/60);
-        let timePastDay = Math.floor((currentDate/1000 - myNewsItem.time)/60/60/24);
+        let timePastMin = Math.floor((currentDate / 1000 - myNewsItem.time) / 60);
+        let timePastHour = Math.floor((currentDate / 1000 - myNewsItem.time) / 60 / 60);
+        let timePastDay = Math.floor((currentDate / 1000 - myNewsItem.time) / 60 / 60 / 24);
         if (timePastMin == 1) {
             return timePastMin + " minute ago"
         } else if (timePastMin < 60) {
             return timePastMin + " minutes ago"
-        } else if (timePastHour <24 ){
+        } else if (timePastHour < 24) {
             return timePastHour + " hours ago"
         } else if (timePastDay == 1) {
             return timePastDay + " day ago"
         } else {
             return timePastDay + " days ago"
         }
-        
+
     }
 
     const getTopLevelDomain = () => {
-        let part = myNewsItem.url
-        return part
+        if (myNewsItem.url) {
+            let parts = []
+            parts = myNewsItem?.url?.split("/")
+            let tld = parts[2]
+            return tld
+        }
     }
 
 
@@ -58,12 +62,12 @@ export default function NewsEntry({ item }) {
             <li>
                 <div><a href={myNewsItem.url}>{myNewsItem.title}</a> ({getTopLevelDomain()})</div>
                 <div>
-                    {myNewsItem.score} point 
-                    by {myNewsItem.by}  
-                    &nbsp;{getTimePast()} 
-                    | <a>hide</a>  
-                    | <a>past</a>  
-                    | <a>discuss</a> 
+                    {myNewsItem.score} point
+                    by {myNewsItem.by}
+                    &nbsp;{getTimePast()}
+                    | <a>hide</a>
+                    | <a>past</a>
+                    | <a>discuss</a>
                 </div>
             </li>
         </>
