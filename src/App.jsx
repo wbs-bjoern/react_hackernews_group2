@@ -3,13 +3,20 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from "./components/Header"
+import New from './components/main/NewsPage/New'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <Header />
+     <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/New" element={<New />} />
+      </Routes>
+    
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -30,6 +37,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      </BrowserRouter>
     </>
   )
 }
