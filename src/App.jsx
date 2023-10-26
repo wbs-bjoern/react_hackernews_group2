@@ -2,9 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import New from './components/main/NewsPage/New'
-import Jobs from './components/main/NewsPage/Jobs'
+import Header from "./components/Header"
+import New from './pages/New'
+import Jobs from './pages/Jobs'
 import Main from './components/main/index'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,8 +14,13 @@ function App() {
 
   return (
     <>
-
-      <Main showPage={showPage} />
+     <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/New" element={<New />} />
+        <Route path="/Jobs" element={<Jobs />} />
+      </Routes>
+    
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -34,6 +41,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      </BrowserRouter>
     </>
   )
 }

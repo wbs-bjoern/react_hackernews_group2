@@ -1,4 +1,4 @@
-import NewsList from "../NewsList/index"
+import NewsList from "../components/main/NewsList"
 
 export default function New () {
     return (
