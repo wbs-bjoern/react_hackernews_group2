@@ -6,7 +6,7 @@ import Header from "./components/Header/Header"
 import New from './components/main/NewsPage/New'
 import New from './pages/New'
 import Jobs from './pages/Jobs'
-import Main from './components/main/index'gi
+import Main from './components/main/index'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from "./components/Footer/index"
 
