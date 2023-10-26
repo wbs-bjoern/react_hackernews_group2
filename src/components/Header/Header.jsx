@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import New from "../main/NewsPage/New";
+import New from "../../pages/New";
 import Logo1 from "./Logo";
-import Jobs from "../pages/Jobs";
+import Jobs from "../../pages/Jobs";
 
 
 export default function Header () {
