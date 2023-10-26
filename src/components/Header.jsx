@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import New from "./main/NewsPage/New";
+import New from "../pages/New";
+import Jobs from "../pages/Jobs";
 
 
 export default function Header () {
@@ -14,7 +15,7 @@ return (
         <li><Link to="/">past</Link></li>
         <li><Link to="/">comments</Link></li>
         <li><Link to="/">show</Link></li>
-        <li><Link to="/">jobs</Link></li>
+        <li><Link to="/Jobs" element={<Jobs />}>jobs</Link></li>
         <li><Link to="">submit</Link></li>
         <li><Link to="/">login</Link></li>
     </ul>
