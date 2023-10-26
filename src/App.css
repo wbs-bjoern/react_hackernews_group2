@@ -64,7 +64,7 @@ ul {
 .link {
   color: black;
 }
-li {
+ul li {
   list-style-type:none;
   padding: 2px 4.3px
   
