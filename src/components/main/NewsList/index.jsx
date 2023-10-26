@@ -25,8 +25,10 @@ export default function NewsList() {
     
 
     return (
-        <ul>
+        
+        <ul className="entry">
             {shownNewsList.map((item) => <NewsEntry key={item} item={item} />)}
         </ul>
+        
     )
 }
