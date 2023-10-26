@@ -4,11 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Header from "./components/Header/Header"
 import New from './components/main/NewsPage/New'
+import New from './pages/New'
+import Jobs from './pages/Jobs'
+import Main from './components/main/index'gi
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from "./components/Footer/index"
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showPage, setPage] = useState(<New />)
 
   return (
     <>
@@ -16,6 +20,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/New" element={<New />} />
+        <Route path="/Jobs" element={<Jobs />} />
       </Routes>
     
       {/* <div>

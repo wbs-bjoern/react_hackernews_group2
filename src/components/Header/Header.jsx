@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import New from "../main/NewsPage/New";
 import Logo1 from "./Logo";
+import Jobs from "../pages/Jobs";
 
 
 export default function Header () {
@@ -13,7 +14,7 @@ return (
         <li><Link className="link" to="/">past</Link></li>
         <li><Link className="link" to="/">comments</Link></li>
         <li><Link className="link" to="/">show</Link></li>
-        <li><Link className="link" to="/">jobs</Link></li>
+        <li><Link to="/Jobs" element={<Jobs />}>jobs</Link></li>
         <li><Link className="link" to="">submit</Link></li>
         <li><Link className="link" to="/">login</Link></li>
     </ul>

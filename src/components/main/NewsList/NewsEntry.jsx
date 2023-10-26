@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 export default function NewsEntry({ item }) {
 
     const [myNewsItem, setMyNewsItem] = useState({ "by": "nora" })
-    const [sourceURL, setSourceURL] = useState()
     const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty"
     const currentDate = Date.now()
 
@@ -20,7 +19,7 @@ export default function NewsEntry({ item }) {
     }
 
     const tellTaskToBeStopped = () => {
-        console.log("Task stopped")
+        console.log(item, "stopped")
     }
 
     useEffect(() => {
@@ -30,17 +29,45 @@ export default function NewsEntry({ item }) {
         )
     }, [])
 
+    const getTimePast = () => {
+        let timePastMin = Math.floor((currentDate / 1000 - myNewsItem.time) / 60);
+        let timePastHour = Math.floor((currentDate / 1000 - myNewsItem.time) / 60 / 60);
+        let timePastDay = Math.floor((currentDate / 1000 - myNewsItem.time) / 60 / 60 / 24);
+        if (timePastMin == 1) {
+            return timePastMin + " minute ago"
+        } else if (timePastMin < 60) {
+            return timePastMin + " minutes ago"
+        } else if (timePastHour < 24) {
+            return timePastHour + " hours ago"
+        } else if (timePastDay == 1) {
+            return timePastDay + " day ago"
+        } else {
+            return timePastDay + " days ago"
+        }
+
+    }
+
+    const getTopLevelDomain = () => {
+        if (myNewsItem.url) {
+            let parts = []
+            parts = myNewsItem?.url?.split("/")
+            let tld = parts[2]
+            return tld
+        }
+    }
+
+
     return (
         <>
             <li>
-                <div>{myNewsItem.title} ({myNewsItem.url})</div>
+                <div><a href={myNewsItem.url}>{myNewsItem.title}</a> ({getTopLevelDomain()})</div>
                 <div>
-                    {myNewsItem.score} point 
-                    by {myNewsItem.by}  
-                    {Math.round((currentDate/1000 - myNewsItem.time)/60)} minute ago 
-                    | <a>hide</a>  
-                    | <a>past</a>  
-                    | <a>discuss</a> 
+                    {myNewsItem.score} point
+                    by {myNewsItem.by}
+                    &nbsp;{getTimePast()}
+                    | <a>hide</a>
+                    | <a>past</a>
+                    | <a>discuss</a>
                 </div>
             </li>
         </>
