@@ -1,12 +1,28 @@
+* {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: small;
+}
+
 #root {
-  max-width: 1280px;
+  display: flex;
+  justify-content: center;
+  color: white (#FFFFFF)
   
-  padding: 2rem;
- 
+  
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:focus {
+  color: white;
 }
 
 /* Header */
-
+nav {
+  background-color: #FF6600;
+  display: flex;
+}
 nav, ul {
   display: flex;
   
@@ -15,8 +31,32 @@ nav, ul {
   
 }
 
+ul {
+  display: flex-start;
+  padding-left: 0;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.logocss {
+  border: 1px solid white;
+}
 /* main */
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 1604px;
+  
+  padding: 2rem;
+
+}
 .entry {
+  margin-top: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  padding-top: 0.5rem;
   flex-direction: column;
   background-color: #F6F6EF;
 }
@@ -39,6 +79,10 @@ ul li {
   background-color: #F6F6EF;
 
 }
+.navFooter a {
+  color: #828282;
+}
+
 
 .logo {
   height: 6em;

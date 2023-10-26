@@ -7,8 +7,8 @@ export default function Logo1 () {
     
 return (   
 <>
-<li><Link className="link" to="/"><img src={logo}/></Link></li>
-<li><Link className="link" to="/">Hacker News</Link></li>
+<li><Link className="link" to="/"><img className='logocss' src={logo}/></Link></li>
+<li className='title'><Link className="link" to="/">Hacker News</Link></li>
 </>
 ) 
 }
