@@ -29,7 +29,7 @@ export default function NewsList({ url, showOL = "1", points=true, author=true, 
 
 
     const showMoreData = () => {
-        setFirstNumber(firstNumber+30)
+        setFirstNumber(prev => prev + 30)
     }
 
     return (

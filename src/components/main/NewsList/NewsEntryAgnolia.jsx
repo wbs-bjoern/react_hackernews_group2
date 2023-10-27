@@ -1,13 +1,13 @@
 
 import { useEffect, useState } from "react"
 
-export default function NewsEntry({ item, points, author, hide, past, comments }) {
+export default function NewsEntryAgnolia({ myNewsItem, points, author, hide, past, comments  }) {
 
-    const [myNewsItem, setMyNewsItem] = useState({})
-    const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty"
+/*     const [myNewsItem, setMyNewsItem] = useState({}) */
+/*     const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty" */
     const currentDate = Date.now()
 
-    const getData = async () => {
+/*     const getData = async () => {
         try {
             const data = await fetch(url)
             const unpackedData = await data.json()
@@ -17,20 +17,18 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
         } catch (error) {
             return "didnt work"
         }
-    }
+    } */
 
-    const tellTaskToBeStopped = () => {
-        console.log(/* item,  */"stopped")
-    }
+/*     const tellTaskToBeStopped = () => {
+        console.log( item,  "stopped")
+    } */
 
-    useEffect(() => {
+/*     useEffect(() => {
         let datagetter = getData()
         return (
             datagetter = tellTaskToBeStopped()
         )
-    }, [])
-
-/*     console.log(myNewsItem) */
+    }, []) */
 
     const getTimePast = () => {
         if (myNewsItem?.time) {
@@ -107,7 +105,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
             <li>
                 <div><img src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a href={myNewsItem.url}>{myNewsItem.title}</a> {getTopLevelDomain()}</div>
                 <div>
-                    {getPoints()} {getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
+                    {getPoints()}{getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
                 </div>
             </li>
         </>
