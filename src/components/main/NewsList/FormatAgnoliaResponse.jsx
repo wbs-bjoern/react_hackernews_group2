@@ -4,7 +4,6 @@ import NewsEntryAgnolia from "./NewsEntryAgnolia"
 export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, author=true, hide=true, past=true, comments=true }) {
 
     const [myNewsList, setMyNewsList] = useState([])
-    const [shownNewsList, setShownNewsList] = useState([])
     const [firstNumber, setFirstNumber] = useState(1)
     const [enumeration, setEnumeration] = useState(1)
 
@@ -13,7 +12,6 @@ export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, 
             const data = await fetch(`${url}&page=${firstNumber}`)
             const unpackedData = await data.json()
             setMyNewsList(unpackedData.hits)
-            setShownNewsList(unpackedData.hits.slice(firstNumber - 1, firstNumber + 29))
             return ""
         } catch (error) {
             return "didnt work"
@@ -21,7 +19,13 @@ export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, 
     }
 
     useEffect(() => {
-        getData()
+        const controller = new AbortController();       
+        fetch(`${url}&page=${firstNumber}`, { signal: controller.signal })
+            .then((result) => result.json())
+            .then((data) => setMyNewsList(data.hits))
+        return () => {
+            controller.abort()
+        }
     }, [firstNumber])
 
     const myAdaptedNewsList = myNewsList.map((element) => ({
