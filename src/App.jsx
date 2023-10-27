@@ -7,6 +7,8 @@ import New from './pages/New'
 import Past from './pages/Past'
 import Jobs from './pages/Jobs'
 import Show from './pages/Show'
+import Ask from './pages/Ask'
+import Author from './components/main/author'
 import Main from './components/main/index'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Footer from "./components/Footer/index"
@@ -23,8 +25,10 @@ function App() {
       <Routes>
         <Route path="/New" element={<New />} />
         <Route path="/Past" element={<Past />} />
+        <Route path="/Ask" element={<Ask />} />
         <Route path="/Show" element={<Show />} />
         <Route path="/Jobs" element={<Jobs />} />
+        <Route path="/Author" element={<Author />} />
       </Routes>
     
       <Footer />

@@ -128,3 +128,7 @@ ul li {
 .navFooter a {
   color: #828282;
 }
+
+td {
+  vertical-align:top;
+}

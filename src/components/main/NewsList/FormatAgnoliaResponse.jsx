@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import NewsEntryAgnolia from "./NewsEntryAgnolia"
+/* import NewsEntry from "./NewsEntry" */
 
 export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, author=true, hide=true, past=true, comments=true }) {
 
@@ -33,9 +34,9 @@ export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, 
         ["score"]: element.points,
         ["title"]: element.title,
         ["time"]: element.created_at_i,
-        ["id"]: element.objectID
+        ["id"]: element.objectID,
+        ["url"]: element.url
     }))
-
 
     const showMoreData = () => {
         setFirstNumber(prev => prev + 1)
@@ -46,7 +47,7 @@ export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, 
 
         <>
             <ol className="entry" start={enumeration}>
-                {myAdaptedNewsList.map((item) => <NewsEntryAgnolia key={item.id} myNewsItem={item} comments={comments} points={points} author={author} hide={hide} past={past} /> )}
+                {myAdaptedNewsList.map((item) => <NewsEntryAgnolia key={item.id} myNewsItem={item} comments={comments} points={points} author={author} hide={hide} past={past} api="algolia" /> )}
                 {/* {shownNewsList?.map((item) => <NewsEntry key={item} item={item} comments={comments} points={points} author={author} hide={hide} past={past}/>)} */}
             </ol>
             <button onClick={showMoreData}>More</button>
