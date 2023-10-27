@@ -52,7 +52,8 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
             let parts = []
             parts = myNewsItem?.url?.split("/")
             let tld = parts[2]
-            return "(" + tld + ")"
+            // return "(" + tld + ")"
+            return   tld  
         }
     }
 
@@ -101,8 +102,8 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
     return (
         <>
             <li>
-                <div><img src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a href={myNewsItem.url}>{myNewsItem.title}</a> {getTopLevelDomain()}</div>
-                <div>
+                <div><img className="triangleIcon" src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a className="newstitle" href={myNewsItem.url}>{myNewsItem.title}</a> <a className="titlelink"href={getTopLevelDomain()}>({getTopLevelDomain()})</a></div>
+                <div className="subtitle">
                     {getPoints()} {getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
                 </div>
             </li>
