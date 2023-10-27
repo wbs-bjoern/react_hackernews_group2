@@ -7,9 +7,9 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
     const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty"
     const currentDate = Date.now()
 
-    const getData = async () => {
+    const getData = async (signal) => {
         try {
-            const data = await fetch(url)
+            const data = await fetch(url, {signal})
             const unpackedData = await data.json()
             setMyNewsItem(unpackedData)
             return myNewsItem
@@ -19,18 +19,14 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
         }
     }
 
-    const tellTaskToBeStopped = () => {
-        console.log(/* item,  */"stopped")
-    }
-
     useEffect(() => {
-        let datagetter = getData()
-        return (
-            datagetter = tellTaskToBeStopped()
-        )
+        const controller = new AbortController(); 
+        const signal = controller.signal 
+        getData(signal)
+        return () => {
+            controller.abort()
+        }
     }, [])
-
-/*     console.log(myNewsItem) */
 
     const getTimePast = () => {
         if (myNewsItem?.time) {
