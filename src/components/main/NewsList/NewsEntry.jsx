@@ -75,7 +75,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
 
     const getAuthor = () => {
         if (author && myNewsItem?.by) {
-            return "by " + myNewsItem.by
+            return   myNewsItem.by
         }
     }
 
@@ -104,7 +104,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
             <li>
                 <div><img className="triangleIcon" src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a className="newstitle" href={myNewsItem.url}>{myNewsItem.title}</a> <a className="titlelink"href={getTopLevelDomain()}>({getTopLevelDomain()})</a></div>
                 <div className="subtitle">
-                    {getPoints()} {getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
+                    {getPoints()} by <a href="">{getAuthor()}</a> <a href="">{getTimePast()}</a> {getHide()} {getPast()} <a>{getComments()}</a>
                 </div>
             </li>
         </>

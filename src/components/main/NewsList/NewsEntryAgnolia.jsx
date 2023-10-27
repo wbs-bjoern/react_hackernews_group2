@@ -103,8 +103,8 @@ export default function NewsEntryAgnolia({ myNewsItem, points, author, hide, pas
     return (
         <>
             <li>
-                <div><img src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a href={myNewsItem.url}>{myNewsItem.title}</a> {getTopLevelDomain()}</div>
-                <div>
+                <div ><img className="triangleIcon" src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a href={myNewsItem.url}>{myNewsItem.title}</a> <a className="" href="">{getTopLevelDomain()}</a></div>
+                <div className="subtitle">
                     {getPoints()}{getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
                 </div>
             </li>

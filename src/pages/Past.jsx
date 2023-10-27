@@ -13,8 +13,9 @@ export default function Past() {
 
     return (
         <div>
-            <p>Stories from {lastShownDate} .</p>
-            <p>Go back a day, month, or year. Go forward a day.</p>
+            <div className="mainDesc">
+            <p >Stories from {lastShownDate} .</p>
+            <p>Go back a day, month, or year. Go forward a day.</p></div>
             <FormatAgnoliaResponse url={url} past={false} api={"agnolia"} />
         </div>
     )
