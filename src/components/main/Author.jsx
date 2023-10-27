@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Author({ username }) {
+export default function AuthorDetails({ username }) {
     // Das mit dem Übergeben des username klappt leider noch nicht.
     const url = `https://hacker-news.firebaseio.com/v0/user/schappim.json`
     const [authorData, setAuthorData] = useState()
