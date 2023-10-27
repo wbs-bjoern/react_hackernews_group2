@@ -30,7 +30,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
         )
     }, [])
 
-    console.log(myNewsItem)
+/*     console.log(myNewsItem) */
 
     const getTimePast = () => {
         if (myNewsItem?.time) {

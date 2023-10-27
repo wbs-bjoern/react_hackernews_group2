@@ -8,8 +8,8 @@ export default function Past() {
 
     const dateText = new Date()
     /* dateText.setUTCDate(lastShownDate) */
-    console.log(dateText)
-    console.log(lastShownDate)
+/*     console.log(dateText)
+    console.log(lastShownDate) */
 
     return (
         <div>
