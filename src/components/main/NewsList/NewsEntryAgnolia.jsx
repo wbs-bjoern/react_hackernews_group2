@@ -1,15 +1,15 @@
 
 import { useEffect, useState } from "react"
 
-export default function NewsEntry({ item, points, author, hide, past, comments }) {
+export default function NewsEntryAgnolia({ myNewsItem, points, author, hide, past, comments  }) {
 
-    const [myNewsItem, setMyNewsItem] = useState({})
-    const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty"
+/*     const [myNewsItem, setMyNewsItem] = useState({}) */
+/*     const url = "https://hacker-news.firebaseio.com/v0/item/" + item + ".json?print=pretty" */
     const currentDate = Date.now()
 
-    const getData = async (signal) => {
+/*     const getData = async () => {
         try {
-            const data = await fetch(url, {signal})
+            const data = await fetch(url)
             const unpackedData = await data.json()
             setMyNewsItem(unpackedData)
             return myNewsItem
@@ -17,16 +17,18 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
         } catch (error) {
             return "didnt work"
         }
-    }
+    } */
 
-    useEffect(() => {
-        const controller = new AbortController(); 
-        const signal = controller.signal 
-        getData(signal)
-        return () => {
-            controller.abort()
-        }
-    }, [])
+/*     const tellTaskToBeStopped = () => {
+        console.log( item,  "stopped")
+    } */
+
+/*     useEffect(() => {
+        let datagetter = getData()
+        return (
+            datagetter = tellTaskToBeStopped()
+        )
+    }, []) */
 
     const getTimePast = () => {
         if (myNewsItem?.time) {
@@ -52,8 +54,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
             let parts = []
             parts = myNewsItem?.url?.split("/")
             let tld = parts[2]
-            // return "(" + tld + ")"
-            return   tld  
+            return "(" + tld + ")"
         }
     }
 
@@ -102,9 +103,9 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
     return (
         <>
             <li>
-                <div><img className="triangleIcon" src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a className="newstitle" href={myNewsItem.url}>{myNewsItem.title}</a> <a className="titlelink"href={getTopLevelDomain()}>({getTopLevelDomain()})</a></div>
-                <div className="subtitle">
-                    {getPoints()} {getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
+                <div><img src="https://news.ycombinator.com/triangle.svg" alt="triangle-icon" /><a href={myNewsItem.url}>{myNewsItem.title}</a> {getTopLevelDomain()}</div>
+                <div>
+                    {getPoints()}{getAuthor()} {getTimePast()} {getHide()} {getPast()} <a>{getComments()}</a>
                 </div>
             </li>
         </>
