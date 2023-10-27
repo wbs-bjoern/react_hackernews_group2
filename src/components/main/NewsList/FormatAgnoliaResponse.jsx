@@ -34,7 +34,8 @@ export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, 
         ["score"]: element.points,
         ["title"]: element.title,
         ["time"]: element.created_at_i,
-        ["id"]: element.objectID
+        ["id"]: element.objectID,
+        ["url"]: element.url
     }))
 
     const showMoreData = () => {
