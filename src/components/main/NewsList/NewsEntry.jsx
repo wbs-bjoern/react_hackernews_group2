@@ -1,5 +1,7 @@
 
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import Author from "../author"
 
 export default function NewsEntry({ item, points, author, hide, past, comments }) {
 
@@ -74,7 +76,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
 
     const getAuthor = () => {
         if (author && myNewsItem?.by) {
-            return "by " + myNewsItem.by
+            return <Link className="link" to={`/Author?${myNewsItem.by}`} element={<Author key={myNewsItem.by} username="schappim" />} state={{username:"schappim"}}>by {myNewsItem.by}</Link>
         }
     }
 
