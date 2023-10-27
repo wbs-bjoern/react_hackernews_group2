@@ -32,13 +32,28 @@ export default function NewsList({ url, showOL = "1", points=true, author=true, 
         setFirstNumber(firstNumber+30)
     }
 
+        let className = 'news-list';
+        if (points) {
+          className += ' show-points';
+        }
+        if (author) {
+          className += ' show-author';
+        }
+        if (comments) {
+            className += ' show-comments';
+          }
+        if (hide) {
+            className += ' show-hide';
+          }
+       
+
     return (
 
-        <>
+        <div className={className}>
             <ol className="entry" style={{ listStyle: showOL }} start={firstNumber}>
                 {shownNewsList?.map((item) => <NewsEntry key={item} item={item} comments={comments} points={points} author={author} hide={hide} past={past}/>)}
             </ol>
-            <button onClick={showMoreData}>More</button>
-        </>
+            <button className="moreButton" onClick={showMoreData}>More</button>
+        </div>
     )
 }
