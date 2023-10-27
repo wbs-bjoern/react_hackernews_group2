@@ -43,13 +43,13 @@ export default function NewsList({ url, showOL = "1", points=true, author=true, 
     console.log(showBtn)
 
     return (
-
-        <div className={className}>
+        
+        <div >
             <ol className="entry" style={{ listStyle: showOL }} start={firstNumber}>
                 {shownNewsList?.map((item) => <NewsEntry key={item} item={item} comments={comments} points={points} author={author} hide={hide} past={past}/>)}
             </ol>
             <button className="moreButton" onClick={showMoreData} style={{display: showBtn}}>More</button>
-        </>
+        </div>
 
     )
 }
