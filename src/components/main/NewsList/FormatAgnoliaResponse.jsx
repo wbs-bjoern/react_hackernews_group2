@@ -50,7 +50,7 @@ export default function FormatAgnoliaResponse({ url, showOL = "1", points=true, 
                 {myAdaptedNewsList.map((item) => <NewsEntryAgnolia key={item.id} myNewsItem={item} comments={comments} points={points} author={author} hide={hide} past={past} api="algolia" /> )}
                 {/* {shownNewsList?.map((item) => <NewsEntry key={item} item={item} comments={comments} points={points} author={author} hide={hide} past={past}/>)} */}
             </ol>
-            <button onClick={showMoreData}>More</button>
+            <button className="moreButton" onClick={showMoreData}>More</button>
         </>
     )
 }

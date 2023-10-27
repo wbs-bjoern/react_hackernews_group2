@@ -39,6 +39,7 @@ export default function NewsEntry({ item, points, author, hide, past, comments }
             let parts = []
             parts = myNewsItem?.url?.split("/")
             let tld = parts[2]
+
             return "(" + tld + ")"
         }
     }

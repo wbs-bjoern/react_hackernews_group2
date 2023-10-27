@@ -19,8 +19,10 @@ export default function Past() {
 
     return (
         <div>
+
+            <div className="mainDesc">
             <p>Stories from {dateText.toUTCString()} .</p>
-            <p>Go back a <button onClick={prevDay}>day</button>, month, or year. Go forward a day.</p>
+            <p>Go back a <button onClick={prevDay}>day</button>, month, or year. Go forward a day.</p></div>
             <FormatAgnoliaResponse url={url} past={false} api={"agnolia"} />
         </div>
     )
